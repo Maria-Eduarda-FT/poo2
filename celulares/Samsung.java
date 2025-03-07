@@ -1,8 +1,18 @@
-public class Samsung implements FabricanteCelular{
-    @Override public Celular constroiCelular (String modelo){
-        if (modelo == "Galaxy8"){
-            return new Galaxy8();
-        } 
-        return null;
+public class Samsung implements FabricanteCelular {
+
+    private static Samsung instancia;
+
+    private Samsung() {}
+
+    public static Samsung getInstancia() {
+        if (instancia == null) {
+            instancia = new Samsung();
+        }
+        return instancia;
+    }
+
+    @Override
+    public Celular constroiCelular(String modelo) {
+        return new galaxy8(modelo);
     }
 }
